@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    include: oauth
+
+  session:
+    store-type: jdbc
+    jdbc.initialize-schema: always
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 200MB
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        enable_lazy_load_no_trans: false
+        default_batch_fetch_size: 1000
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: DEBUG
+          type:
+            descriptor:
+              sql:
+                BasicBinder: TRACE
